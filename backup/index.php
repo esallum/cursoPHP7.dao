@@ -21,20 +21,15 @@ require_once("config.php");
 //$usuario->login("root", "");
 //echo $usuario;
 
+$aluno = new Usuario("aluno","@lun0");
+$aluno->insert();
+echo $aluno;
+
 //$sql = new Sql();
+
 //$usuarios=$sql->select("SELECT *  FROM tbusuarios");
+
 //echo json_encode($usuarios);
 
-//Criando um novo usuario
-//$aluno = new Usuario("Aluno","@lu0");
-//$aluno->insert();
-//echo $aluno;
-
-$usuario = new Usuario();
-$usuario->loadById(10);
-
-$usuario->update("professor", "!@#$%$#");
-
-echo $usuario;
 ?>
 
