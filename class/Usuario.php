@@ -18,7 +18,7 @@ class Usuario{
 	public function getDeslogin(){
 		
 		return $this->deslogin;
-		}
+	}
 	public function setDeslogin($value){
 		
 		$this->deslogin = $value;
@@ -96,7 +96,7 @@ class Usuario{
 		$this->setDessenha($data['dessenha']);
 		$this->setDtcadastro(new DateTime($data['dtcadastro']));
 	}
-public function update($login, $password){
+	public function update($login, $password){
 		$this->setDeslogin($login);
 		$this->setDessenha($password);
 		$sql = new Sql();
@@ -106,11 +106,20 @@ public function update($login, $password){
 			':ID'=>$this->getIdusuario()
 		));
 	}
+	public function delete(){
+	$sql = new Sql();
+	$sql->query("DELETE FROM tbusuarios WHERE idusuario = :ID", array(
+		'ID'=>$this->getIdusuario()
+	));
+	$this->setIdusuario(0);
+	$this->setDeslogin("");
+	$this->setDessenha("");
+	$this->setDtcadastro(new DateTime());
+}
 	public function __construct($login = "", $password = ""){
 		$this->setDeslogin($login);
 		$this->setDessenha($password);
 	}
-
 
 	public function __toString(){
 		
